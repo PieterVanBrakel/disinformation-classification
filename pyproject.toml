@@ -14,9 +14,16 @@ classifiers = [
 ]
 license = {text = "MIT"}
 dependencies = [
-  "typer"
+  "fastparquet>=2026.3.0",
+  "typer",
+  "pyyaml",
+  "tqdm>=4.67.3",
+  "scikit-learn==1.7.2",
+  "nltk>=3.9.4",
+  "matplotlib>=3.10.8",
+  "seaborn>=0.13.2",
 ]
-requires-python = ">= 3.10"
+requires-python = ">=3.10,<3.12"
 
 [project.optional-dependencies]
 test = [

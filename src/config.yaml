@@ -1,0 +1,23 @@
+data:
+  raw_path: data/raw/WELFake_Dataset.csv
+  cleaned_path: data/interim/cleaned.parquet
+  processed_train_path: data/processed/train.parquet
+  processed_test_path: data/processed/test.parquet
+
+preprocessing:
+  text_column: text
+  label_column: label
+  test_size: 0.2
+
+model:
+  max_features: 20000
+  ngram_range: [1, 2]
+
+training:
+  cv_folds: 5
+  scoring: f1
+
+output:
+  model_path: models/production/lsvm_model.joblib
+  vectorizer_path: models/production/vectorizer.joblib
+  metrics_path: models/metrics/
