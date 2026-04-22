@@ -13,6 +13,10 @@ model:
   max_features: 20000
   ngram_range: [1, 2]
 
+mlflow:
+  experiment_name: disinformation-classifier   # ADD
+  tracking_uri:    mlruns                      # ADD
+
 training:
   cv_folds: 5
   scoring: f1
@@ -21,3 +25,9 @@ output:
   model_path: models/production/lsvm_model.joblib
   vectorizer_path: models/production/vectorizer.joblib
   metrics_path: models/metrics/
+
+rag:
+  vectorstore_path: data/vectorstore/factchecks
+  k: 4
+  model: gpt-4o-mini
+  temperature: 0
