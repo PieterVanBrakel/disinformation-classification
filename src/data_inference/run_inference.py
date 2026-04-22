@@ -2,9 +2,13 @@ import joblib
 import yaml
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 from .predict import predict
-from .explain import explain_prediction
-from .visualize import plot_top_features
+from .explain import RAGExplainer
+
+# Load environment variables (.env)
+load_dotenv()
 
 
 def run_inference():
@@ -31,20 +35,17 @@ def run_inference():
 
     # 🔮 Prediction
     pred = predict(text, model, vectorizer)
-    print(f"\nPrediction: {pred[0]}")
+    label = int(pred[0])
 
-    # 🧠 Explanation
-    contributions = explain_prediction(text, model, vectorizer)
+    print(f"\nPrediction: {label}")
 
-    print("\nTop contributing words:")
-    for word, score in contributions:
-        print(f"{word}: {score:.4f}")
+    # 🧠 RAG explanation
+    print("\nGenerating RAG explanation...")
+    rag = RAGExplainer()
+    explanation = rag.explain(text, str(label))
 
-    # 📊 Visualization
-    output_dir = PROJECT_ROOT / "models" / "inference"
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    plot_top_features(contributions, output_dir / "feature_importance.png")
+    print("\nRAG Explanation:\n")
+    print(explanation)
 
     print("\nInference complete.")
 
