@@ -14,6 +14,7 @@ __pycache__/
 *$py.class
 
 .env
+Claude.md
 
 # C extensions
 *.so
