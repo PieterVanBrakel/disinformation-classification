@@ -5,11 +5,15 @@ data/
 models/
 *.pkl 
 *.joblib
+mlruns/
+mlartifacts/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
 *$py.class
+
+.env
 
 # C extensions
 *.so
